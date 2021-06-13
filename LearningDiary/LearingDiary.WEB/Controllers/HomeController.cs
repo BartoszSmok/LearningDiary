@@ -15,30 +15,36 @@ namespace LearingDiary.WEB.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly HttpClient _httpClient;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IHttpClientFactory httpClient)
         {
             _logger = logger;
+            _httpClient = httpClient.CreateClient("LearningDiaryApi");
         }
 
         public async Task<IActionResult> Index()
         {
-            using (HttpClient client = new HttpClient())
-            {
-                HttpResponseMessage response =
-                    await client.GetAsync($"http://learningdiary.api/api/Entries");
+            var response = await _httpClient.GetAsync("/api/Entries");
+            var content = await response.Content.ReadAsStringAsync();
+            var entriesList = JsonConvert.DeserializeObject<IEnumerable<EntryDto>>(content);
+            return View(entriesList);
+            //using (HttpClient client = new HttpClient())
+            //{
+            //    HttpResponseMessage response =
+            //        await client.GetAsync($"http://learningdiary.api/api/Entries");
 
-                if (response.IsSuccessStatusCode)
-                {
-                    var entries =
-                        JsonConvert.DeserializeObject<IEnumerable<EntryDto>>(await response.Content.ReadAsStringAsync());
-                    return View(entries);
-                }
-                else
-                {
-                    return View();
-                }
-            }
+            //    if (response.IsSuccessStatusCode)
+            //    {
+            //        var entries =
+            //            JsonConvert.DeserializeObject<IEnumerable<EntryDto>>(await response.Content.ReadAsStringAsync());
+            //        return View(entries);
+            //    }
+            //    else
+            //    {
+            //        return View();
+            //    }
+            //}
         }
 
         public IActionResult Privacy()

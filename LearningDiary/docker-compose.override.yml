@@ -8,6 +8,7 @@ services:
       - "27017:27017"
 
   learningdiary.api:
+    container_name: learningdiaryapi
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - "DatabaseSettings:ConnectionString=mongodb://db:27017"
@@ -17,7 +18,9 @@ services:
       - "8100:80"
 
   learningdiary.web:
+    container_name: learningdiaryweb
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - "LearningDiaryApiUrl=http://learningdiaryapi"
     ports:
       - "8101:80"
