@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: learningdiaryweb 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: learningdiaryweb
+  template:
+    metadata:
+      labels:
+        app: learningdiaryweb 
+    spec:
+      containers:
+        - name: learningdiaryweb 
+          image: learningdiaryacr.azurecr.io/learningdiaryweb
+          ports:
+          - containerPort: 80
