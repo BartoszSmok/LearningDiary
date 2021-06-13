@@ -13,7 +13,7 @@ variables:
   dockerRegistryServiceConnection: 'b0209f1e-9282-4841-bf74-866f6d23de95'
   imageRepository: 'bartoszsmoklearningdiary'
   containerRegistry: 'learningdiaryacr.azurecr.io'
-  dockerfilePath: '$(Build.SourcesDirectory)/LearningDiary/LearingDiary.WEB/Dockerfile'
+  dockerfilePath: '$(Build.SourcesDirectory)/LearningDiary/LearingDiary.API/Dockerfile'
   tag: '$(Build.BuildId)'
 
   # Agent VM image name
