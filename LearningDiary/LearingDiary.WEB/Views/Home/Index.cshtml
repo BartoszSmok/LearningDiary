@@ -1,0 +1,24 @@
+﻿@using System.Runtime.InteropServices.ComTypes
+@model IEnumerable<LearningDiary.COMMON.Dtos.EntryDto>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    @{
+        foreach (var entry in Model)
+        {
+        <div>
+            <p>@entry.Title @entry.DateOfCreation</p>
+            <p>@entry.Description</p>
+            @foreach (var tag in entry.Tags)
+            {
+                var temp = tag + " ";
+                @temp
+            }
+        </div>
+        }
+        
+    }
+</div>
+

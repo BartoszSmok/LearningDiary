@@ -1,0 +1,23 @@
+version: '3.4'
+
+services:
+  mongosrvtwo:
+    container_name: db
+    restart: always
+    ports:
+      - "27017:27017"
+
+  learningdiary.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "DatabaseSettings:ConnectionString=mongodb://db:27017"
+    depends_on:
+      - mongosrvtwo
+    ports:
+      - "8100:80"
+
+  learningdiary.web:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "8101:80"

@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+  mongosrvtwo:
+    image: mongo
+
+  learningdiary.api:
+    image: ${DOCKER_REGISTRY-}learningdiaryapi
+    build:
+      context: .
+      dockerfile: LearningDiary.API/Dockerfile
+
+  learningdiary.web:
+    image: ${DOCKER_REGISTRY-}learningdiaryweb
+    build:
+      context: .
+      dockerfile: LearingDiary.WEB/Dockerfile
