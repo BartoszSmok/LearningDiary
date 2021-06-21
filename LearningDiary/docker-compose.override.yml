@@ -5,13 +5,13 @@ services:
     container_name: db
     restart: always
     ports:
-      - "27017:27017"
+      - "27019:27017"
 
   learningdiary.api:
     container_name: learningdiaryapi
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - "DatabaseSettings:ConnectionString=mongodb://db:27017"
+      - "DatabaseSettings:ConnectionString=mongodb://db:27019"
     depends_on:
       - mongosrvtwo
     ports:

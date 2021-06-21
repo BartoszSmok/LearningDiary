@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<LearningDiary.COMMON.Dtos.EntryDto>
 
-<h1>DEPLOY VERSION v2</h1>
+<h1>DEPLOY VERSION v3</h1>
 <div class="text-center">
     @{
         foreach (var entry in Model)
@@ -8,11 +8,6 @@
         <div>
             <p>@entry.Title @entry.DateOfCreation</p>
             <p>@entry.Description</p>
-            @foreach (var tag in entry.Tags)
-            {
-                var temp = tag + " ";
-                @temp
-            }
         </div>
         }
         
