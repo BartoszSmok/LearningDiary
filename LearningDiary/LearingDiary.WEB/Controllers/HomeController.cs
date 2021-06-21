@@ -28,8 +28,8 @@ namespace LearingDiary.WEB.Controllers
             var response = await _httpClient.GetAsync("/api/Entries");
             var content = await response.Content.ReadAsStringAsync();
             var entriesList = JsonConvert.DeserializeObject<IEnumerable<EntryDto>>(content);
-            return View();
-            //return View(entriesList);
+            //return View();
+            return View(entriesList);
             //using (HttpClient client = new HttpClient())
             //{
             //    HttpResponseMessage response =
