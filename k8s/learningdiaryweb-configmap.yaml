@@ -1,0 +1,6 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: learningdiaryweb-configmap
+data:
+  learningdiaryapi_url: http://learningdiaryapi-service:8000
