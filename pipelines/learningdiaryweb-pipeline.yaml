@@ -8,7 +8,7 @@ trigger:
       - main
     paths:
       include:
-      - LearningDiary/LearningDiary.WEB/*
+      - LearningDiary/LearingDiary.WEB/*
       - aks/learningdiaryweb.yaml
 
 resources:
