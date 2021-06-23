@@ -28,27 +28,16 @@ namespace LearingDiary.WEB.Controllers
             var response = await _httpClient.GetAsync("/api/Entries");
             var content = await response.Content.ReadAsStringAsync();
             var entriesList = JsonConvert.DeserializeObject<IEnumerable<EntryDto>>(content);
-            //return View();
-            return View(entriesList);
-            //using (HttpClient client = new HttpClient())
-            //{
-            //    HttpResponseMessage response =
-            //        await client.GetAsync($"http://learningdiary.api/api/Entries");
 
-            //    if (response.IsSuccessStatusCode)
-            //    {
-            //        var entries =
-            //            JsonConvert.DeserializeObject<IEnumerable<EntryDto>>(await response.Content.ReadAsStringAsync());
-            //        return View(entries);
-            //    }
-            //    else
-            //    {
-            //        return View();
-            //    }
-            //}
+            return View(entriesList);
         }
 
         public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        public IActionResult AddEntry()
         {
             return View();
         }
