@@ -51,7 +51,7 @@ namespace LearingDiary.WEB.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddEntry([Bind("Id,Name,Email,Message")] CreateEntryDto entry)
+        public async Task<IActionResult> AddEntry([Bind("Title,Description,Tags")] CreateEntryDto entry)
         {
             if (ModelState.IsValid)
             {
