@@ -2,26 +2,25 @@
 
 <h1>Learning Diary v6</h1>
 
-
+@foreach (var item in Model)
+{
     <table class="table">
         <tbody>
-        @foreach (var item in Model)
-        {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DateOfCreation.ToShortDateString())
+                @Html.DisplayFor(modelItem => item.DateOfCreation)
             </td>
         </tr>
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-            </tr>
-        }
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+        </tr>
         </tbody>
     </table>
+}
 
 
