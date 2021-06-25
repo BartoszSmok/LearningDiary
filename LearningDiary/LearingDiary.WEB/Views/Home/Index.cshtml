@@ -2,14 +2,16 @@
 
 <h1>Learning Diary v6</h1>
 
-
-<table class="table">
-    <tbody>
-    @foreach (var item in Model)
-    {
+@foreach (var item in Model)
+{
+    <table class="table">
+        <tbody>
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfCreation.ToShortDateString())
             </td>
         </tr>
         <tr>
@@ -17,24 +19,8 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
         </tr>
-    }
-    </tbody>
-</table>
-<div class="text-center">
-    @{
-        foreach (var entry in Model)
-        {
-        <div>
-            <p>@entry.Title @entry.DateOfCreation</p>
-            <p>@entry.Description</p>
-            @foreach (var tag in entry.Tags)
-            {
-                var temp = tag + " ";
-                @temp
-            }
-        </div>
-        }
-        
-    }
-</div>
+        </tbody>
+    </table>
+}
+
 

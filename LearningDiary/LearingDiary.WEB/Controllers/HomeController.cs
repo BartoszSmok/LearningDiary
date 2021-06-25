@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace LearingDiary.WEB.Controllers
@@ -46,6 +47,20 @@ namespace LearingDiary.WEB.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddEntry([Bind("Id,Name,Email,Message")] CreateEntryDto entry)
+        {
+            if (ModelState.IsValid)
+            {
+                var content = new StringContent(JsonConvert.SerializeObject(entry), Encoding.UTF8, "application/json");
+
+                await _httpClient.PostAsync("/api/Entries", content);
+                return RedirectToAction(nameof(Index));
+            }
+            return View(entry);
         }
     }
 }
