@@ -1,6 +1,25 @@
 ﻿@model IEnumerable<LearningDiary.COMMON.Dtos.EntryDto>
 
-<h1>DEPLOY VERSION v5</h1>
+<h1>Learning Diary v6</h1>
+
+
+<table class="table">
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
 <div class="text-center">
     @{
         foreach (var entry in Model)
